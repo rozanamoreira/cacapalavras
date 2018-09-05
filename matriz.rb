@@ -29,12 +29,16 @@ class Matriz
   def find_left_to_right(word)
 
     @linhas.times do |n|
-      return {linha: n+1, coluna: @matriz[n].join.index(word)+1 } if @matriz[n].join.index(word)
+      indice = @matriz[n].join.index(word)
+      return {linha: n + 1, coluna: indice + 1 } if indice
     end
   end
 
  def find_right_to_left(word)
-   @matriz.reverse.join.index word
+   @linhas.times do |n|
+     indice = @matriz[n].join.index(word.reverse)
+     return {linha: n + 1 , coluna: indice + 1 + word.size } if indice
+   end
  end
 
 end
