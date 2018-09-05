@@ -20,12 +20,6 @@ class Matriz
 
  end
 
-  # def highlight(word,index)
-  #   size = word.size
-  #   @matriz[index..size-1].downcase!
-  # end
-
-
   def find_left_to_right(word)
 
     @linhas.times do |n|
@@ -35,9 +29,14 @@ class Matriz
   end
 
  def find_right_to_left(word)
-   @linhas.times do |n|
-     indice = @matriz[n].join.index(word.reverse)
-     return {linha: n + 1 , coluna: indice + 1 + word.size } if indice
+   r = find_left_to_right(word.reverse)
+   r[:coluna] += word.size - 1 if r.is_a? Hash
+   r
+ end
+
+ def find_top_to_bottom(word)
+   @colunas.times do |n|
+     indice = @matriz[n]
    end
  end
 
