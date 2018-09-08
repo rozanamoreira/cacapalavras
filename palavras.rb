@@ -1,18 +1,14 @@
 require './matriz.rb'
 
-puts "Please type two numbers to form the Matrix"
-x = gets.chomp
-y = gets.chomp
+x, y = ARGV
 
-# x = 50
-# y = 50
 m = Matriz.new(x.to_i,y.to_i)
 
 m.display
 
-puts "What do you want to find?"
+puts 'What do you want to find?'
 
-w = gets.chomp
+w = STDIN.gets.chomp.upcase
 
 puts "Left to Right: #{m.find_left_to_right(w)}"
 puts "Right to Left: #{m.find_right_to_left(w)}"
