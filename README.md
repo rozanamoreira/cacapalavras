@@ -3,7 +3,7 @@ This is a word jumbler app for pratice purposes
 run the palavras.rb file to create a random matrix with the given numbers. 
 
 ## Requirements 
-in order to point up the words, install colorize
+in order to point up the words, you MUST install colorize
 ```ruby
  gem install colorize
 ```
