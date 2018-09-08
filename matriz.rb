@@ -74,11 +74,24 @@ class Matriz
   end
 
   def find_diagonal_right_down(word)
-    return "Not yet"
+    list_of_first_letter_coord = find_first_letter_vertical(word)
+    found = []
+    list_of_first_letter_coord.each do |a|
+      letras = 0
+      word.size.times { |n| letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]-n].to_s }
+      found << a if letras == word.size
+    end
+    format_hash(found)
   end
 
   def find_diagonal_left_up(word)
-    return "Not yet"
+    r = find_diagonal_right_down(word.reverse)
+    return if r.empty?
+    r.each do |h|
+      h[:row] += word.size - 1
+      h[:column] -= word.size - 1
+    end
+    r
   end
 
   private
