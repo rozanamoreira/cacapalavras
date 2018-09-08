@@ -14,11 +14,16 @@ class Matriz
     end
   end
 
+  def find(word)
+    find_bottom_to_top word
+  end
+
   def find_left_to_right(word)
     @rows.times do |n|
       indice = @matrix_body[n].join.index(word)
       return {row: n + 1, column: indice + 1 } if indice
     end
+    nil
   end
 
   def find_right_to_left(word)
@@ -44,6 +49,7 @@ class Matriz
     r.each do |h|
       h[:row] += word.size - 1
     end
+    r
   end
 
   def find_diagonal_left_down(word)
@@ -54,33 +60,46 @@ class Matriz
       word.size.times { |n| letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]+n].to_s }
       found << a if letras == word.size
     end
-    print format_hash(found)
+    format_hash(found)
   end
 
-end
-
-private
-
-def find_first_letter_vertical(word)
-  list = []
-  0.upto(@rows - word.size) do |n|
-    i = @matrix_body[n].join.index(word[0])
-    list << [n,i] if i
+  def find_diagonal_right_up(word)
+    r = find_diagonal_left_down(word.reverse)
+    return if r.empty?
+    r.each do |h|
+      h[:row] += word.size - 1
+      h[:column] += word.size - 1
+    end
+    r
   end
-  list
-end
 
-def format_hash(array)
-  coordinates = []
-  array.each do |a|
-    h = {}
-    h[:row] = a[0] + 1
-    h[:column] = a[1] + 1
-    coordinates << h
+  def find_diagonal_right_down(word)
+    return "Not yet"
   end
-  coordinates
-end
 
-def find(word)
+  def find_diagonal_left_up(word)
+    return "Not yet"
+  end
 
+  private
+
+  def find_first_letter_vertical(word)
+    list = []
+    0.upto(@rows - word.size) do |n|
+      i = @matrix_body[n].join.index(word[0])
+      list << [n,i] if i
+    end
+    list
+  end
+
+  def format_hash(array)
+    coordinates = []
+    array.each do |a|
+      h = {}
+      h[:row] = a[0] + 1
+      h[:column] = a[1] + 1
+      coordinates << h
+    end
+    coordinates
+  end
 end
