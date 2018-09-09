@@ -42,9 +42,13 @@ class Matriz
       when :vertical
         @matrix_body[coord[0] + n][coord[1]] =
             @matrix_body[coord[0] + n][coord[1]].to_s.yellow
-      else
+      when :diagonal_left
         @matrix_body[coord[0] + n][coord[1] + n] =
             @matrix_body[coord[0] + n][coord[1] + n].to_s.red
+      when :diagonal_right
+        @matrix_body[coord[0] + n][coord[1] - n] =
+            @matrix_body[coord[0] + n][coord[1] - n].to_s.green
+
       end
     end
   end
