@@ -21,11 +21,11 @@ class Matriz
       str = "#{word} >>> \
       Left to Right: #{find_left_to_right(word.upcase)}\
       Right to Left: #{find_right_to_left(word.upcase)}\
-      Top to Bottom: #{find_top_to_bottom(word.upcase)}\
+      Top to Bottom: #{find(word.upcase,:vertical)}\
       Bottom up: #{find_bottom_to_top(word.upcase)}\
-      Diagonal Left Down: #{find_diagonal_left_down(word.upcase)}\
+      Diagonal Left Down: #{find(word.upcase, :diagonal_left)}\
       Diagonal Right Up: #{find_diagonal_right_up(word.upcase)}\
-      Diagonal Right Down: #{find_diagonal_right_down(word.upcase)}\
+      Diagonal Right Down: #{find(word.upcase, :diagonal_right)}\
       Diagonal Left Up: #{find_diagonal_left_up(word.upcase)}."
       puts str.gsub(/ {6}/, ' | ')
     end
@@ -34,19 +34,15 @@ class Matriz
   end
 
   def hl(coord, direction, size)
-    case direction
-    when :horizontal
-      size.times do |n|
+    size.times do |n|
+      case direction
+      when :horizontal
         @matrix_body[coord[0]][coord[1] + n] =
             @matrix_body[coord[0]][coord[1] + n].to_s.blue
-      end
-    when :vertical
-      size.times do |n|
+      when :vertical
         @matrix_body[coord[0] + n][coord[1]] =
             @matrix_body[coord[0] + n][coord[1]].to_s.yellow
-      end
-    when :diagonal
-      size.times do |n|
+      else
         @matrix_body[coord[0] + n][coord[1] + n] =
             @matrix_body[coord[0] + n][coord[1] + n].to_s.red
       end
@@ -68,45 +64,36 @@ class Matriz
     r
   end
 
-  def find_top_to_bottom(word)
+  def find(word, direction)
     list_of_first_letter_coord = find_first_letter_vertical(word)
     found = []
     list_of_first_letter_coord.each do |a|
       letras = 0
       word.size.times do |n|
-        letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]].to_s
+        case direction
+        when :vertical
+          letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]].to_s
+        when :diagonal_left
+          letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]+n].to_s
+        when :diagonal_right
+          letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]-n].to_s
+        end
+        found << a if letras == word.size
+        hl(a, direction, word.size) if letras == word.size
       end
-      found << a if letras == word.size
-      hl(a,:vertical, word.size) if letras == word.size
     end
     format_hash(found)
   end
 
   def find_bottom_to_top(word)
-    r = find_top_to_bottom(word.reverse)
+    r = find(word.reverse,:vertical)
     return if r.empty?
-    r.each do |h|
-      h[:row] += word.size - 1
-    end
+    r.each { |h| h[:row] += word.size - 1 }
     r
   end
 
-  def find_diagonal_left_down(word)
-    list_of_first_letter_coord = find_first_letter_vertical(word)
-    found = []
-    list_of_first_letter_coord.each do |a|
-      letras = 0
-      word.size.times do |n|
-        letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]+n].to_s
-      end
-      found << a if letras == word.size
-      hl(a,:diagonal, word.size) if letras == word.size
-    end
-    format_hash(found)
-  end
-
   def find_diagonal_right_up(word)
-    r = find_diagonal_left_down(word.reverse)
+    r = find(word.reverse, :diagonal_left)
     return if r.empty?
     r.each do |h|
       h[:row] += word.size - 1
@@ -115,21 +102,8 @@ class Matriz
     r
   end
 
-  def find_diagonal_right_down(word)
-    list_of_first_letter_coord = find_first_letter_vertical(word)
-    found = []
-    list_of_first_letter_coord.each do |a|
-      letras = 0
-      word.size.times do
-        |n| letras += 1 if word[n] == @matrix_body[a[0]+n][a[1]-n].to_s
-      end
-      found << a if letras == word.size
-    end
-    format_hash(found)
-  end
-
   def find_diagonal_left_up(word)
-    r = find_diagonal_right_down(word.reverse)
+    r = find(word.reverse, :diagonal_right)
     return if r.empty?
     r.each do |h|
       h[:row] += word.size - 1
