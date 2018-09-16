@@ -7,9 +7,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="RVM: ruby-2.3.6 [cacapalavras]" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="coderay (v1.1.2, RVM: ruby-2.3.6 [cacapalavras]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="colorize (v0.8.1, RVM: ruby-2.3.6 [cacapalavras]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="method_source (v0.9.0, RVM: ruby-2.3.6 [cacapalavras]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pry (v0.11.3, RVM: ruby-2.3.6 [cacapalavras]) [gem]" level="application" />
   </component>
 </module>

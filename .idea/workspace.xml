@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="806934a1-fbde-442e-bee2-e3691ef9380a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/matriz.rb" beforeDir="false" afterPath="$PROJECT_DIR$/matriz.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/palavras.rb" beforeDir="false" afterPath="$PROJECT_DIR$/palavras.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/palavras.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state>
+              <caret column="21" selection-start-column="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -66,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matriz.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -111,8 +112,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/matriz.rb" />
         <option value="$PROJECT_DIR$/palavras.rb" />
+        <option value="$PROJECT_DIR$/matriz.rb" />
       </list>
     </option>
   </component>
@@ -181,12 +182,12 @@
       <workItem from="1536374327291" duration="20741000" />
       <workItem from="1536629377982" duration="1067000" />
       <workItem from="1536863136156" duration="646000" />
-      <workItem from="1537055356619" duration="6955000" />
+      <workItem from="1537055356619" duration="7136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52748000" />
+    <option name="totallyTimeSpent" value="52929000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -303,15 +304,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/matriz.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/palavras.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>

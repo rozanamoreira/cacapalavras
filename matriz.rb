@@ -1,5 +1,4 @@
 require 'colorize'
-require 'pry'
 
 class Matriz
   def initialize(m,n)

@@ -1,5 +1,4 @@
 require './matriz.rb'
-require 'pry'
 x, y = ARGV
 
 m = Matriz.new(x.to_i,y.to_i)
