@@ -1,13 +1,9 @@
 require './matriz.rb'
-x, y = ARGV
+x, y, fn = ARGV
 
 m = Matriz.new(x.to_i,y.to_i)
 
-puts 'Type filename'
-
-fn = STDIN.gets.chomp
-
-if fn.empty?
+if fn.nil?
   puts 'No File given. Using Sample.'
   fn = 'sample.txt'
 elsif !File.exists?(fn)
