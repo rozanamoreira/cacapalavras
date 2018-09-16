@@ -1,4 +1,5 @@
 require 'colorize'
+require 'pry'
 
 class Matriz
   def initialize(m,n)
@@ -48,18 +49,25 @@ class Matriz
       when :diagonal_right
         @matrix_body[coord[0] + n][coord[1] - n] =
             @matrix_body[coord[0] + n][coord[1] - n].to_s.green
-
       end
     end
   end
 
   def find_left_to_right(word)
+    found = []
     @rows.times do |n|
-      indice = @matrix_body[n].join.index(word)
-      hl([n, indice],:horizontal, word.size) if indice
-      return {row: n + 1, column: indice + 1 } if indice
+      next_start = 0
+      loop do
+        indice = @matrix_body[n].join.index(word, next_start)
+        if indice
+          next_start = indice + word.size
+          hl([n, indice],:horizontal, word.size)
+          found << {row: n + 1, column: indice + 1 }
+        end
+        break if indice.nil?
+      end
     end
-    nil
+    found.empty? ? nil : found
   end
 
   def find_right_to_left(word)
